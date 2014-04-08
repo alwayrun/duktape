@@ -1836,11 +1836,7 @@ void duk_js_execute_bytecode(duk_hthread *entry_thread) {
 				 * explicit SETALEN which will update the length.
 				 */
 
-				/* FIXME: duk_def_prop() will currently coerce its argument to a string,
-				 * causing every array index to be interned, avoiding interning is quite
-				 * important to handle large array literals efficiently.
-				 *
-				 * FIXME: further, because we're dealing with 'own' properties of a fresh
+				/* FIXME: because we're dealing with 'own' properties of a fresh
 				 * array, the array initializer should just ensure that the array has a
 				 * large enough array part and write the values directly into array part,
 				 * and finally set 'length' manually in the end (as already happens now).
